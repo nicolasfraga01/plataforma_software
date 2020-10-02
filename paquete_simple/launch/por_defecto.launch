@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="paquete_simple" type="ejemplo.py" name="nodo_basico" output="screen">
+	</node>
+</launch>

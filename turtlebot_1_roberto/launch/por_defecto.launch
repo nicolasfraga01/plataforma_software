@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="turtlebot_1_roberto" type="ejercicio.py" name="simulacion_turtlebot" output="screen">
+	</node>
+</launch>
