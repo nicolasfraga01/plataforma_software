@@ -1,14 +1,25 @@
 #!/usr/bin/env python
 
 import rospy
-import math
+
 from sensor_msgs.msg import LaserScan
 
 
 def callback(msg):
-    print min(msg.range[360])
+ 
+    distancia_izq=msg.ranges[719]
+    distancia_der=msg.ranges[0]
+    distancia_del=msg.ranges[360]
+    vector=[distancia_izq,distancia_der,distancia_del]
+    if min(vector)==distancia_izq:
+        print "Distancia minima--> 180 grados: ",msg.ranges[719]
+    elif min(vector)==distancia_der:
+        print "Distancia minima--> 0 grados: ",msg.ranges[0]
+    elif min(vector)==distancia_del:
+        print "Distancia minima--> 90 grados: ", msg.ranges[360]
+
 
 rospy.init_node('laser_turtlebot')
-sub=rospy.Subscriber('/scan',LaserScan,callback)
-rospy.Rate(2)
+sub=rospy.Subscriber('/kobuki/laser/scan',LaserScan,callback)
+rospy.Rate(10)
 rospy.spin()
