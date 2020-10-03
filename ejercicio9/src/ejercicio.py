@@ -5,7 +5,7 @@ from nav_msgs.msg import Odometry
 
 
 def callback(msg):
-    print msg.pose.pose
+    print "Posicion:\n{}".format(msg.pose.pose.position)
 
 rospy.init_node('pos_turtlebot')
 sub=rospy.Subscriber('/odom',Odometry,callback)

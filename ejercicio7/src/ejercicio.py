@@ -5,7 +5,7 @@ from std_msgs.msg import Int32
 
 
 def callback(msg):
-    print msg.data
+    print "Numero: {}".format(msg.data)
 
 rospy.init_node('subscriptor_ejercicio7')
 
