@@ -5,7 +5,7 @@ from std_msgs.msg import Int32
 
 rospy.init_node('publicador_ejercicio')
 pub=rospy.Publisher('/mensaje_ejercicio6',Int32,queue_size=1)
-rate=rospy.Rate(5)
+rate=rospy.Rate(10)
 
 numero=Int32()
 
