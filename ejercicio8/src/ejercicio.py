@@ -30,7 +30,7 @@ def sumador():
 		    
         
         if contador==10:
-            print "Suma-->{}".format(suma)
+            print "Suma-->{}\n".format(suma)
             contador=0
             suma=0
 
