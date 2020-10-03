@@ -1,0 +1,4 @@
+<launch>
+        <node pkg="ejercicio11" type="ejercicio.py name="suscriptor_ej11" output="screen">
+        <\node>
+<\launch>        
