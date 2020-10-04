@@ -5,26 +5,36 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
 
 
+
 def callback(msg):
-    distancia_izq=msg.ranges[719]
-    distancia_der=msg.ranges[0]
-    distancia_del=msg.ranges[360]
     mover=Twist()
-    if distancia_del>1:
-        mover.linear.x=0.5
+    dist_del=msg.ranges[360]
+    dist_der=msg.ranges[0]
+    dist_izq=msg.ranges[179]
+
+    if dist_del>1:    
+        mover.linear.x=0.2
         pub.publish(mover)
-    elif distancia_del<1:
-        mover.angular.z=-90
+        mover.linear.x=0
+    elif dist_del<1:
+        mover.angular.z=1
         pub.publish(mover)
-    elif distancia_der<1:
-        mover.angular.z=-90
+        rate.sleep(2)
+        mover.angular.z=0
+    elif dist_der<1:
+        mover.angular.z=1
         pub.publish(mover)
-    elif distancia_izq<1:
-        mover.angular.z=90
+        rate.sleep(2)
+        mover.angular.z=0
+    elif dist_izq<1:
+        mover.angular.z=-1
         pub.publish(mover)
-    
+        rate.sleep(2)
+        mover.angular.z=0
+
+
 rospy.init_node('sub_ej12')
-sub=rospy.Subscriber('/kobuki/laser/scan',LaserScan,callback)
 pub=rospy.Publisher('/mobile_base/commands/velocity',Twist,queue_size=1)
-rospy.Rate(2)
+sub=rospy.Subscriber('/scan',LaserScan,callback)
+rate=rospy.Rate(10)
 rospy.spin()
