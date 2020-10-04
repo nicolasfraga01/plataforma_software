@@ -19,7 +19,7 @@ def callback(msg):
         print "Distancia minima--> 90 grados: ", msg.ranges[360]
 
 
-rospy.init_node('laser_turtlebot')
+rospy.init_node('distmin_laser')
 sub=rospy.Subscriber('/kobuki/laser/scan',LaserScan,callback)
 rospy.Rate(10)
 rospy.spin()
