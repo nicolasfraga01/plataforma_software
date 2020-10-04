@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <launch>
         <node pkg="ejercicio11" type="ejercicio.py" name="distmin_laser_11" output="screen">
         </node>
 </launch>
+=======
+<launch>
+        <node pkg="ejercicio11" type="ejercicio.py" name="distmin_laser_11" output="screen">
+        </node>
+</launch>
+>>>>>>> 6dedaaac996750cf26c04b68c4efbb52bd779f69
