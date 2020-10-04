@@ -1,0 +1,4 @@
+<launch>
+        <node pkg="ejercicio11" type="ejercicio" name="distmin_laser_11" output="screen">
+        </node>
+</launch>

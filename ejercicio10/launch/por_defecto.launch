@@ -1,4 +1,4 @@
 <launch>
-	<node pkg="ejercicio10" type="ejercicio.py" name="laser_turtlebot" output="screen">
+	<node pkg="ejercicio10" type="ejercicio.py" name="distmin_laser" output="screen">
 	</node>
 </launch>
