@@ -20,6 +20,7 @@ def callback(msg):
 
 def sumador():
     global contador,suma,numero
+    
     rospy.init_node('subscriptor_ejercicio8')
     sub=rospy.Subscriber('/mensaje_ejercicio6',Int32,callback)
     rate=rospy.Rate(10)
@@ -30,7 +31,7 @@ def sumador():
 		    
         
         if contador==10:
-            print "Suma-->{}\n".format(suma)
+            print "\nSuma-->{}\n".format(suma)
             contador=0
             suma=0
 
@@ -42,12 +43,6 @@ if __name__ == "__main__":
         sumador()
     except rospy.ROSInterruptException:
         pass
-
-
-
-
-
-
 
 
 
