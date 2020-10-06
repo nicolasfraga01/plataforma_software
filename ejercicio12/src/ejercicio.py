@@ -8,28 +8,32 @@ from geometry_msgs.msg import Twist
 
 def callback(msg):
     mover=Twist()
-    dist_del=msg.ranges[360]
-    dist_der=msg.ranges[0]
-    dist_izq=msg.ranges[179]
-
-    if dist_del>1:    
-        mover.linear.x=0.2
+    distancia_izq=msg.ranges[len(msg.ranges)-1]
+    distancia_der=msg.ranges[0]
+    distancia_del=msg.ranges[len(msg.ranges)/2]
+    
+    if distancia_del>1:    
+        mover.linear.x=0.5
+        rospy.loginfo("Avanzando")
         pub.publish(mover)
         mover.linear.x=0
-    elif dist_del<1:
-        mover.angular.z=1
+    elif distancia_del<1:
+        mover.angular.z=1.5
+        rospy.loginfo("Girando izq")
         pub.publish(mover)
-        rate.sleep(2)
+        rate.sleep()
         mover.angular.z=0
-    elif dist_der<1:
-        mover.angular.z=1
+    elif distancia_der<1:
+        mover.angular.z=1.5
+        rospy.loginfo("Girando izq")
         pub.publish(mover)
-        rate.sleep(2)
+        rate.sleep()
         mover.angular.z=0
-    elif dist_izq<1:
-        mover.angular.z=-1
+    elif distancia_izq<1:
+        mover.angular.z=-1.5
+        rospy.loginfo("Girando der")
         pub.publish(mover)
-        rate.sleep(2)
+        rate.sleep()
         mover.angular.z=0
 
 
@@ -38,3 +42,4 @@ pub=rospy.Publisher('/mobile_base/commands/velocity',Twist,queue_size=1)
 sub=rospy.Subscriber('/scan',LaserScan,callback)
 rate=rospy.Rate(10)
 rospy.spin()
+
